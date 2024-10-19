@@ -46,6 +46,7 @@ class _LoginPageState extends State<LoginPage> {
             _inputField("Username", usernameController),
             const SizedBox(height: 20),
             _inputField("Role", passwordController),
+            //isPassword: true
             const SizedBox(height: 50),
             _loginBtn(),
             const SizedBox(height: 20),
@@ -64,6 +65,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  //{bool isPassword = false}
   Widget _inputField(String hintText, TextEditingController controller) {
     var border = OutlineInputBorder(
         borderRadius: BorderRadius.circular(18),
