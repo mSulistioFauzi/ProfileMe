@@ -6,8 +6,10 @@ import 'navbar_profil.dart';
 
 class ProfilPage extends StatelessWidget {
   final String username;
-  final String password;
-  const ProfilPage({super.key, required this.username, required this.password});
+  final String role;
+  final String deskripsi;
+  final String sekolah;
+  const ProfilPage({super.key, required this.username, required this.role, required this.deskripsi, required this.sekolah});
 
   // Fungsi untuk logout, yaitu menghapus token
   Future<void> logout(BuildContext context) async {
@@ -24,8 +26,6 @@ class ProfilPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Username: $username");
-    print("Password: $password");
 
     return Scaffold(
       body: Stack(
@@ -72,7 +72,7 @@ class ProfilPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            '$password',
+                            '$role',
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w300,
@@ -80,8 +80,8 @@ class ProfilPage extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          const Text(
-                            'Saya adalah seorang pelajar di SMK WIKRAMA BOGOR, jurusan yang saya ambil PPLG',
+                          Text(
+                            '$deskripsi',
                             style: TextStyle(
                               fontSize: 16,
                               fontFamily: 'Roboto',
@@ -89,6 +89,15 @@ class ProfilPage extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 10),
+                          Text(
+                            '$sekolah',
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Roboto',
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                           TextButton(
                             onPressed: () {
                               Navigator.push(

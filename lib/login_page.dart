@@ -9,11 +9,14 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController roleController = TextEditingController();
+  final TextEditingController deskripsiController = TextEditingController();
+  final TextEditingController sekolahController = TextEditingController();
+
 
   // Contoh data login
-  final String correctUsername = "Tio";
-  final String correctPassword = "Android Developer";
+  // final String correctUsername = "Tio";
+  // final String correctPassword = "Android Developer";
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +48,12 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 50),
             _inputField("Username", usernameController),
             const SizedBox(height: 20),
-            _inputField("Role", passwordController),
+            _inputField("Role", roleController),
             //isPassword: true
+            const SizedBox(height: 20),
+            _inputField("Deskripsi", deskripsiController),
+            const SizedBox(height: 20),
+            _inputField("Sekolah", sekolahController),
             const SizedBox(height: 50),
             _loginBtn(),
             const SizedBox(height: 20),
@@ -107,10 +114,10 @@ class _LoginPageState extends State<LoginPage> {
 
   // Fungsi untuk menangani login
   void _handleLogin() async {
-    String username = usernameController.text;
-    String password = passwordController.text;
+    // String username = usernameController.text;
+    // String password = roleController.text;
 
-    if (username == correctUsername && password == correctPassword) {
+    // if (username == correctUsername && password == correctPassword) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('token', 'your_token_here'); // Simpan token
       print('Login berhasil: Token disimpan');
@@ -118,13 +125,15 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => ProfilPage(
-          username: username,
-          password: password,
+          username: usernameController.text,
+          role: roleController.text,
+          deskripsi: deskripsiController.text,
+          sekolah: sekolahController.text,
         )),
       );
-    } else {
-      _showDialog("Login Gagal", "Username atau Password salah.");
-    }
+    // } else {
+    //   _showDialog("Login Gagal", "Username atau Password salah.");
+    // }
   }
 
   // Fungsi untuk menampilkan alert ketika login gagal
